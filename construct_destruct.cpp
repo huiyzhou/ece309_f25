@@ -16,6 +16,11 @@ Foo makeFoo(string str) {
     return f;   // return by value
 }
 
+//Example of pass by value (i.e., a copy of Foo is created and then deleted
+//int SizeFoo(Foo f){
+//    return(f.str.size());
+//}
+
 int main() {
     Foo x("hello");           // #1
     x = makeFoo("world");   // #2
@@ -24,5 +29,10 @@ int main() {
     
     Foo x1 = makeFoo("ECE309");  //#1
     
+    
     cout << x1.str << endl;
+    
+    //int size = SizeFoo(x1);
+    
+    //cout << size << endl;
 }
