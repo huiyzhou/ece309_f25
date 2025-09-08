@@ -105,8 +105,8 @@ public:
     }
 
     // Access coefficient
-    ComplexNum& operator[](int i) { return coeffs[i]; }
-    const ComplexNum& operator[](int i) const { return coeffs[i]; }
+    ComplexNum& operator[](int i) { return coeffs[i]; }  //potential out of bound access!!!
+    const ComplexNum& operator[](int i) const { return coeffs[i]; } //potential out of bound access!!!
 
     // Degree getter
     int getDegree() const { return degree; }
