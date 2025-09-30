@@ -16,6 +16,7 @@ public:
     char c;
     char d;
     char e;
+    void print() override {std::cout << "Derived::print\n";}
 };
 
 // Multiple inheritance
@@ -27,6 +28,7 @@ public:
 class MultiDerived : public Base, public Other {
 public:
     char y;
+    void print() override {std::cout << "MultiDerived::print\n";}
 };
 
 int main() {
@@ -55,6 +57,20 @@ int main() {
     std::cout << "offset of Base::b = " << offsetof(MultiDerived, b) << "\n";
     std::cout << "offset of Other::x= " << offsetof(MultiDerived, x) << "\n";
     std::cout << "offset of y       = " << offsetof(MultiDerived, y) << "\n";
+
+    Base * ptr_b;
+    Base x;
+    Derived y;
+    MultiDerived z;
+    
+    ptr_b = &x;
+    ptr_b->print();
+    
+    ptr_b = &y;
+    ptr_b->print();
+    
+    ptr_b = &z;
+    ptr_b->print();
 
     return 0;
 }
