@@ -16,8 +16,9 @@ public:
         for (int i = 0; i < 10; ++i) {
             int localCopy;
             {
-                std::lock_guard<std::mutex> lock(valueMutex);
+                std::lock_guard<std::mutex> lock(valueMutex);   //std::unique_lock<std::mutex> lock(valueMutex);
                 localCopy = sharedValue;
+                //lock.unlock();
             }
             std::cout << "[Reader] sees: " << localCopy << std::endl;
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
@@ -32,8 +33,9 @@ public:
         for (int i = 0; i < 10; ++i) {
             int newValue;
             {
-                std::lock_guard<std::mutex> lock(valueMutex);
+                std::lock_guard<std::mutex> lock(valueMutex);  //std::unique_lock<std::mutex> lock(valueMutex);
                 sharedValue++;
+                //lock.unlock();
                 newValue = sharedValue;
             }
             std::cout << "    [Writer] increments to: " << newValue << std::endl;
